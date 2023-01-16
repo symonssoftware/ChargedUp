@@ -113,7 +113,7 @@ public class SwerveModule {
         waitForCanCoder(); // Need to remove this if we're going to call reset from Robot.java and DrivebaseSubsystem.java
         double absolutePosition = Conversions.degreesToFalcon(getCanCoder().getDegrees() - m_angleOffset.getDegrees(),
                 Constants.Swerve.angleGearRatio);
-        m_angleMotor.setSelectedSensorPosition(absolutePosition);
+        m_angleMotor.setSelectedSensorPosition(absolutePosition, 0, 100);
     }
 
     private void configAngleEncoder() {
