@@ -7,16 +7,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.utils.CTREConfigs;
 
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to
- * each mode, as described in the TimedRobot documentation. If you change the
- * name of this class or
- * the package after creating this project, you must also update the
- * build.gradle file in the
- * project.
- */
 public class Robot extends TimedRobot {
     public static CTREConfigs ctreConfigs;
 
@@ -61,7 +53,7 @@ public class Robot extends TimedRobot {
         CommandScheduler.getInstance().run();
     }
 
-    /** This function is called once each time the robot enters Disabled mode. */
+    // This function is called once each time the robot enters Disabled mode.
     @Override
     public void disabledInit() {
         RobotContainer.getDrivebaseSubsystem().setMotorsToCoast();
@@ -87,7 +79,7 @@ public class Robot extends TimedRobot {
         }
     }
 
-    /** This function is called periodically during autonomous. */
+    // This function is called periodically during autonomous. 
     @Override
     public void autonomousPeriodic() {
     }
@@ -104,7 +96,7 @@ public class Robot extends TimedRobot {
         }
     }
 
-    /** This function is called periodically during operator control. */
+    // This function is called periodically during operator control. 
     @Override
     public void teleopPeriodic() {
     }
@@ -115,7 +107,7 @@ public class Robot extends TimedRobot {
         CommandScheduler.getInstance().cancelAll();
     }
 
-    /** This function is called periodically during test mode. */
+    // This function is called periodically during test mode. 
     @Override
     public void testPeriodic() {
     }

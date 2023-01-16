@@ -44,8 +44,7 @@ public class FollowTrajectoryCommand extends SequentialCommandGroup {
                     drivebaseSubsystem.getOdometry().resetPosition(drivebaseSubsystem.getYaw(), drivebaseSubsystem.getModulePositions(), path.getInitialHolonomicPose());
                 }
             }),
-            command
-            
+            command            
         );
     }
 }

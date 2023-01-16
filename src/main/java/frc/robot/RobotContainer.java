@@ -2,7 +2,6 @@ package frc.robot;
 
 import java.util.HashMap;
 
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -24,33 +23,30 @@ import frc.robot.subsystems.*;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-    /* Controllers */
-    private final Joystick m_joystick = new Joystick(0);
-    private final XboxController m_xboxController = new XboxController(1);
-
-    /* Drive Controls */
+    // Controllers 
+    private final XboxController m_xboxController = new XboxController(0);
+    private final Joystick m_joystick = new Joystick(1);
+ 
+    // Drive Controls 
     private final int m_translationAxis = XboxController.Axis.kLeftY.value;
     private final int m_strafeAxis = XboxController.Axis.kLeftX.value;
     private final int m_rotationAxis = XboxController.Axis.kRightX.value;
 
-    /* Joystick Buttons */
+    // Joystick Buttons 
     private final JoystickButton m_zeroGyroJoystickButton = new JoystickButton(m_joystick,
             XboxController.Button.kY.value);
     private final JoystickButton m_robotCentricJoystickButton = new JoystickButton(m_joystick,
             XboxController.Button.kLeftBumper.value);
 
-    /* Xbox Controller Buttons */
+    // Xbox Buttons 
     private Trigger m_zeroGryoXboxControllerButton = new Trigger(m_xboxController::getBackButton);
     private Trigger m_robotCentricXboxControllerButton = new Trigger(m_xboxController::getLeftBumper);
 
-    /* Subsystems */
+    // Subsystems 
     private final static DrivebaseSubsystem m_drivebaseSubsystem = new DrivebaseSubsystem();
     private final static AprilTagSubsystem m_aprilTagSubsystem = new AprilTagSubsystem();
     private final static LEDStripSubsystem m_ledStripSubsystem = new LEDStripSubsystem();
 
-    /**
-     * The container for the robot. Contains subsystems, OI devices, and commands.
-     */
     public RobotContainer() {
 
         // Joystick
@@ -81,14 +77,6 @@ public class RobotContainer {
         configureButtonBindings();
     }
 
-    /**
-     * Use this method to define your button->command mappings. Buttons can be
-     * created by
-     * instantiating a {@link GenericHID} or one of its subclasses ({@link
-     * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing
-     * it to a {@link
-     * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
-     */
     private void configureButtonBindings() {
 
         HashMap<String, Command> eventMap = new HashMap<>();
@@ -96,10 +84,10 @@ public class RobotContainer {
             m_ledStripSubsystem.rainbow();
         }));
 
-        /* Joystick Buttons */
+        // Joystick Buttons 
         m_zeroGyroJoystickButton.onTrue(new InstantCommand(() -> m_drivebaseSubsystem.zeroGyro()));
 
-        /* XboxController Buttons */
+        // XboxController Buttons 
         m_zeroGryoXboxControllerButton.onTrue(new InstantCommand(() -> m_drivebaseSubsystem.zeroGyro()));
 
         new Trigger(m_xboxController::getYButton)
@@ -120,11 +108,6 @@ public class RobotContainer {
                         } m_drivebaseSubsystem)*/));
     }
 
-    /**
-     * Use this to pass the autonomous command to the main {@link Robot} class.
-     *
-     * @return the command to run in autonomous
-     */
     public Command getAutonomousCommand() {
         // An ExampleCommand will run in autonomous
         return new ExampleAuto(m_drivebaseSubsystem);

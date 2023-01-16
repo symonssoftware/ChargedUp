@@ -16,7 +16,7 @@ public class DockWithAprilTagCommand extends CommandBase {
     private Runnable m_dockWithAprilTagRunnable;
     private Thread m_dockWithAprilTagThread;
 
-    /** Creates a new ThreadedDockWithAprilTagCommand. */
+    // Creates a new ThreadedDockWithAprilTagCommand.
     public DockWithAprilTagCommand(XboxController xboxController, DrivebaseSubsystem drivebaseSubsystem,
             AprilTagSubsystem aprilTagSubsystem,
             boolean isCameraForward,

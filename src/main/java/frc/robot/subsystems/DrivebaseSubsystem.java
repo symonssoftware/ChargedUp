@@ -1,8 +1,7 @@
 package frc.robot.subsystems;
 
-import frc.robot.SwerveModule;
 import frc.robot.Constants;
-
+import frc.robot.utils.SwerveModule;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
@@ -108,7 +107,7 @@ public class DrivebaseSubsystem extends SubsystemBase {
         }
     }
 
-    /* Used by SwerveControllerCommand in Auto */
+    // Used by SwerveControllerCommand in Auto 
     public void setModuleStates(SwerveModuleState[] desiredStates) {
         SwerveDriveKinematics.desaturateWheelSpeeds(desiredStates, Constants.Swerve.maxSpeed);
 
@@ -158,13 +157,11 @@ public class DrivebaseSubsystem extends SubsystemBase {
         return m_rotationalAdjustmentTableEntry.getDouble(INITIAL_INPUT_ADJUSTMENT);
     }
 
-        /*
-     * This method is used to determine if the robot has stopped moving
-     * during an autonomous command being run inside a thread. We need
-     * a way of killing the tread if the robot is obstructed for some
-     * unforseen reason. We'll just pick one of the drive motors to
-     * monitor its movement.
-     */
+    // This method is used to determine if the robot has stopped moving
+    // during an autonomous command being run inside a thread. We need
+    // a way of killing the tread if the robot is obstructed for some
+    // unforseen reason. We'll just pick one of the drive motors to
+    // monitor its movement.
     private double getEncoderCount() {
         return m_SwerveMods[0].getDriveMotor().getSelectedSensorPosition();
     }

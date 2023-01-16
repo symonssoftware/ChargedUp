@@ -1,4 +1,4 @@
-package frc.robot;
+package frc.robot.utils;
 
 import com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration;
 import com.ctre.phoenix.motorcontrol.can.TalonFXConfiguration;
@@ -6,6 +6,8 @@ import com.ctre.phoenix.sensors.AbsoluteSensorRange;
 import com.ctre.phoenix.sensors.CANCoderConfiguration;
 import com.ctre.phoenix.sensors.SensorInitializationStrategy;
 import com.ctre.phoenix.sensors.SensorTimeBase;
+
+import frc.robot.Constants;
 
 public final class CTREConfigs {
     public TalonFXConfiguration swerveAngleFXConfig;
@@ -17,7 +19,7 @@ public final class CTREConfigs {
         swerveDriveFXConfig = new TalonFXConfiguration();
         swerveCanCoderConfig = new CANCoderConfiguration();
 
-        /* Swerve Angle Motor Configurations */
+        // Swerve Angle Motor Configurations
         SupplyCurrentLimitConfiguration angleSupplyLimit = new SupplyCurrentLimitConfiguration(
                 Constants.Swerve.angleEnableCurrentLimit,
                 Constants.Swerve.angleContinuousCurrentLimit,
@@ -30,7 +32,7 @@ public final class CTREConfigs {
         swerveAngleFXConfig.slot0.kF = Constants.Swerve.angleKF;
         swerveAngleFXConfig.supplyCurrLimit = angleSupplyLimit;
 
-        /* Swerve Drive Motor Configuration */
+        // Swerve Drive Motor Configuration
         SupplyCurrentLimitConfiguration driveSupplyLimit = new SupplyCurrentLimitConfiguration(
                 Constants.Swerve.driveEnableCurrentLimit,
                 Constants.Swerve.driveContinuousCurrentLimit,
@@ -45,7 +47,7 @@ public final class CTREConfigs {
         swerveDriveFXConfig.openloopRamp = Constants.Swerve.openLoopRamp;
         swerveDriveFXConfig.closedloopRamp = Constants.Swerve.closedLoopRamp;
 
-        /* Swerve CANCoder Configuration */
+        // Swerve CANCoder Configuration
         swerveCanCoderConfig.absoluteSensorRange = AbsoluteSensorRange.Unsigned_0_to_360;
         swerveCanCoderConfig.sensorDirection = Constants.Swerve.canCoderInvert;
         swerveCanCoderConfig.initializationStrategy = SensorInitializationStrategy.BootToAbsolutePosition;
