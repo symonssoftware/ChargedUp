@@ -44,6 +44,7 @@ public class DrivebaseSubsystem extends SubsystemBase {
     private static final double ROC_DT_SECONDS = 0.02;
 
     public DrivebaseSubsystem() {
+        DriverStation.silenceJoystickConnectionWarning(true);
         ShuffleboardTab m_drivebaseTab = Shuffleboard.getTab("Drivebase");
 
         // m_gyro = new Pigeon2(Constants.Swerve.pigeonID);
@@ -206,8 +207,17 @@ public class DrivebaseSubsystem extends SubsystemBase {
         }
     }
 
+    public void resetModulesToAbsolute(){
+        for(SwerveModule mod : m_SwerveMods){
+            mod.resetToAbsolute();
+        }
+    }
+
     @Override
     public void periodic() {
+        // if (DriverStation.isDisabled()){
+        //     resetModulesToAbsolute();
+        // }
 
         // Calling calculateEncoderRoc every period causes loop overruns
         // so we'll only do it once a second.
