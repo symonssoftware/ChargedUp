@@ -31,15 +31,15 @@ public class TeleopSwerveDriveCommand extends CommandBase {
     @Override
     public void execute() {
         /* Get Values, Deadband */
-        double translationVal = MathUtil.applyDeadband(m_translationSup.getAsDouble(), Constants.joystickDeadband);
-        double strafeVal = MathUtil.applyDeadband(m_strafeSup.getAsDouble(), Constants.joystickDeadband);
-        double rotationVal = MathUtil.applyDeadband(m_rotationSup.getAsDouble(), Constants.joystickDeadband);
+        double translationVal = MathUtil.applyDeadband(-m_translationSup.getAsDouble(), Constants.joystickDeadband);
+        double strafeVal = MathUtil.applyDeadband(-m_strafeSup.getAsDouble(), Constants.joystickDeadband);
+        double rotationVal = MathUtil.applyDeadband(-m_rotationSup.getAsDouble(), Constants.joystickDeadband);
 
         /* Drive */
         m_drivebaseSubsystem.drive(
                 new Translation2d(translationVal, strafeVal).times(Constants.Swerve.maxSpeed),
                 rotationVal * Constants.Swerve.maxAngularVelocity,
                 !m_robotCentricSup.getAsBoolean(),
-                true);
+                false);
     }
 }

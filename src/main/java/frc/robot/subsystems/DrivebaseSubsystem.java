@@ -215,9 +215,9 @@ public class DrivebaseSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {
-        // if (DriverStation.isDisabled()){
-        //     resetModulesToAbsolute();
-        // }
+        if (DriverStation.isDisabled()){
+            resetModulesToAbsolute();
+        }
 
         // Calling calculateEncoderRoc every period causes loop overruns
         // so we'll only do it once a second.
